@@ -1,0 +1,60 @@
+// SETTINGS
+
+// This is the default html and body font-size for the base rem value.
+$rem-base: 16px;
+
+// The $base-line-height is 100% while $base-font-size is 150%
+$base-line-height: 150%;
+
+// We use these as default colors throughout
+$base-color: #0B1E25;                   // Dark blue
+$primary-color: #25687C;              	// Acqua blue
+// $secondary-color: #ffffff;          	// Undefined
+// $tertiary-color: #ffffff;            // Undefined
+
+// $alert-color: #ffffff;               
+// $success-color: #ffffff;             
+// $warning-color: #ffffff;             
+// $info-color: #ffffff;                
+
+// We use these to control various font styles
+// $base-* refers to the base styles when there's nothing else to override them.
+$base-font-color: tint($base-color, 20%);
+$base-font-family: "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-weight: normal;
+$base-font-style: normal;
+$base-font-bold: 700;
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius: 1rem;
+$global-rounded: 60rem;
+
+// We use this rgba to apply a border-like shadow
+$border-shadow-rgba: rgba($base-color, 0.08);
+
+// Media query ranges
+$small-range: (0, 543px);
+$medium-range: (544px, 767px);
+$large-range: (768px, 991px);
+$xlarge-range: (992px, 1199px);
+$xxlarge-range: (1200px);
+
+$screen: "only screen";
+
+$landscape: "#{$screen} and (orientation: landscape)";
+$portrait: "#{$screen} and (orientation: portrait)";
+
+$small-up: $screen;
+$small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";
+
+$medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
+$medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})";
+
+$large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
+$large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})";
+
+$xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
+$xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})";
+
+$xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
+$xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";

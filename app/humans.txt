@@ -1,0 +1,14 @@
+/* TEAM */
+Developer: Daniel da Silva
+Site: http://danielfdsilva.com
+Twitter: @danielfdsilva
+Location: Lisbon, Portugal
+
+/* THANKS */
+Name: Ricardo Mestre - http://duplos.org
+
+/* SITE */
+Last update: 2015/02/04
+Standards: HTML5, CSS3
+Software: Eclipse, Adobe Illustrator CC, Adobe Photoshop CC, Iconmoon, Compass, Grunt
+Version: 1.0.0

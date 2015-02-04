@@ -1,0 +1,366 @@
+// BASE STYLES
+
+// GLOBAL
+
+html, body {
+  height: 100%;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+body {
+  background: #FFFF;
+  color: $base-font-color;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-style: $base-font-style;
+  min-width: 320px;
+}
+
+#site-canvas {
+  height: inherit;
+  
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+// Links
+
+a {
+  cursor: pointer;
+  color: $primary-color;
+  text-decoration: none;
+  @include transform(translateZ(0));
+  @include transition-property(opacity);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease);
+  @include transition-delay(0);
+}
+
+a:visited {
+  color: $primary-color;
+}
+
+a:hover {
+  opacity: 0.64;
+  outline: none;
+}
+
+a:active{
+  outline: none;
+  @include transform(translate(0, 1px));
+}
+
+// Rows
+
+.row {
+  @extend .clearfix;
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 80rem;
+  @media #{$large-up} {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+// SITE HEADER
+
+#site-header {
+  background: url('../graphics/layout/headimage.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  padding: 0.5rem 2rem;
+  font-weight: $base-font-bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 0 0 $border-shadow-rgba;
+  
+  text-align: center;  
+}
+
+
+#site-title {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-image: url('../graphics/content/logo_small.svg');
+  max-width: 14.7rem;
+
+  @media #{$medium-up} {
+    background-image: url('../graphics/content/logo_big.svg');
+    max-width: 44rem;
+  }
+}
+
+
+
+#site-body {
+  position: relative;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  background: #FFFFFF;
+}
+
+.prime-title {
+  margin-bottom: 3rem;
+}
+
+#who {
+  background: tint($base-color, 92%);
+  border-top: 1px solid tint($base-color, 84%);
+  border-bottom: 1px solid tint($base-color, 84%);
+  padding: 4rem 1rem;
+  text-align: center;
+  
+  .profile-picture {
+    @include center();
+    border-radius: $global-rounded;
+    box-shadow: 0 0 0 1px $border-shadow-rgba;
+    margin-bottom: 3rem;
+  }
+  
+  .prose {
+    @include center();
+    max-width: 57rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#work {
+  padding: 4rem 1rem;
+  text-align: center;
+  
+  .project-list {
+    list-style: none;
+    text-align: center;
+    
+    .project-wrapper {
+      display: inline-block;
+      margin: 0 1rem 2rem 1rem;
+    }
+
+    .project-avatar {
+      border-radius: $global-rounded;
+      box-shadow: 0 0 0 1px $border-shadow-rgba;
+      overflow: hidden;
+      
+      img {
+        width: inherit;
+        height: inherit;
+        border-radius: $global-rounded;
+      }
+    }
+
+    .project {
+    
+      .project-inner {
+        text-align: center;
+
+        > a {
+          @include center();
+          &:hover {
+            @include opacity(1);
+          }
+        }
+      }
+      
+      .project-title {
+        margin-bottom: 2rem;
+      }
+      
+      .project-source {
+        text-align: center;
+        margin: -1.5rem 0 2rem 0;
+        font-size: 0.875rem;
+        line-height: 1rem;
+
+        a {
+          color: tint($base-color, 50%);
+          &:before {
+            position: relative;
+            top: 1px;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+          }
+        }
+        
+        &.github a:before {
+          @extend .icon-github;
+        }
+        &.external a:before {
+          @extend .icon-external;
+        }
+        &._500px a:before {
+          @extend .icon-500px;
+        }
+      }
+
+      .bttn {
+        margin-top: 2rem;
+      }
+
+      // Project as a circle.
+      &:not(.revealed) {
+        .project-inner {
+          > .project-avatar {
+            width: 12.5rem;
+            height: 12.5rem;
+            @include transition(transform .1s ease-in-out);
+
+            &:hover {
+              @include transform(scale(1.10));
+            }
+          }
+        }
+        .project-details {
+          @extend .visually-hidden;
+        }
+        .project-avatar {
+          
+        }
+      }
+
+      // Project as a modal.
+      &.revealed {
+        @extend .modal;
+        .project-inner {
+          @extend .modal-inner;
+        }
+        .project-avatar {
+          width: 6.5rem;
+          height: 6.5rem;
+          margin-bottom: 1rem;
+          cursor: default;
+          
+          &:active {
+            transform: none;
+          }
+          
+          @media #{$medium-up} {
+            margin-bottom: 2rem;
+          }
+        }
+      }
+
+    } // End .project
+
+  }
+}
+
+#site-footer {
+  position: relative;
+  top: 100%;
+  left: 0;
+  z-index: 5;
+  padding: 2rem 1rem;
+  background: $primary-color;
+  color: #FFF;
+  text-align: center;
+  
+  h1 {
+    @extend .hd-s;
+    margin: 3rem 0 1rem 0;
+    @include opacity(0.64);
+  }
+  
+  .prose {
+    @include center();
+    font-size: 0.875rem;
+    max-width: 34rem;
+    @include opacity(0.64);
+    
+    a {
+      color: #FFF;
+      text-decoration: underline;
+    }
+  }
+  
+  .attribution {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    @include opacity(0.64);
+  }
+  
+  ul {
+    list-style: none;
+    display: inline-block;
+
+    li {
+      float: left;
+      margin: 0 2.5rem 0 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  
+  .social {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: #FFF;
+    font-weight: bold;
+
+    span {
+      @extend .visually-hidden;
+    }
+
+    &.github:before {
+      @extend .icon-github;
+    }
+    &.twitter:before {
+      @extend .icon-twitter;
+    }
+    &.facebook:before {
+      @extend .icon-facebook;
+    }
+    &.email:before {
+      @extend .icon-plane;
+    }
+  }
+}
+
+// IE < 9
+
+.lt-ie9 {
+  #site-canvas {
+    display: none;
+  }
+  #nocando {
+    margin: 200px auto;
+    padding: 32px;
+    max-width: 440px;
+    background: #fff;
+    h1 {
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+  }
+}

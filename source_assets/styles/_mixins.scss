@@ -1,0 +1,31 @@
+// TYPE
+
+// Headings
+
+@mixin heading($font-size) {
+  font-size: $font-size;
+  line-height: $font-size + 0.25;
+  @media #{$medium-up} {
+    $font-size: $font-size + 0.25;
+    font-size: $font-size;
+    line-height: $font-size + 0.25;
+  }
+}
+
+// BUTTONS
+
+// Variations
+
+@mixin bttn-variation($color) {
+  background-color: $color;
+  &:hover {
+    background-color: shade($color, 4%);
+  }
+  .open > &,
+  .chosen-with-drop > &,
+  &.active,
+  &.active:hover,
+  &:active {
+    background-color: shade($color, 8%);
+  }
+}

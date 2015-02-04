@@ -1,0 +1,127 @@
+%base-overlay-skin {
+  background: #fff;
+  border-radius: $global-radius;
+  box-shadow: 0 0 0 1px $border-shadow-rgba, 0 2px 8px 0 rgba($base-color, 0.16);
+}
+
+// MODALS
+
+$modal-padding: 1rem;
+
+// This parent can be any width and height
+// http://css-tricks.com/centering-in-the-unknown/
+.modal {
+  text-align: center;
+  background: none repeat scroll 0 0 rgba($base-color, 0.80);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  overflow-y: auto;
+  padding: 0 1rem;
+  
+  // The ghost, nudged to maintain perfect centering
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 1px;
+    margin-right: -6px; // Adjusts for spacing
+  }
+}
+
+// The element to be centered, can also be of any width and height
+.modal-inner {
+  @extend %base-overlay-skin;
+  position: relative;
+  width: 100%;
+  max-width: 46rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 1rem 0;
+  padding: $modal-padding;
+  @media #{$large-up} {
+    padding: ($modal-padding*2);
+    margin: 2rem 0;
+  }
+}
+
+// Modal sizes
+
+.modal-s .modal-inner{
+  max-width: 22rem;
+}
+.modal-m .modal-inner{
+  max-width: 34rem;
+}
+.modal-l .modal-inner{
+  max-width: 46rem;
+}
+
+// For the animation
+.modal {
+  opacity: 0;
+  visibility: hidden;
+
+  .modal-inner {
+    opacity: 0;
+    margin-top: -4rem;
+    visibility: hidden;
+  }
+  
+  &.revealed {
+    @include transform(translate3d(0, 0, 0));
+    @include transition-property(opacity, visibility);
+    @include transition-duration(0.1s, 0.1s);
+    @include transition-timing-function(ease, linear);
+    @include transition-delay(0, 0);
+    
+    opacity: 1;
+    visibility: visible;
+    
+    .modal-inner {
+      @include transform(translate3d(0, 0, 0));
+      @include transition-property(opacity, margin, visibility);
+      @include transition-duration(0.1s, 0.1s, 0.1s);
+      @include transition-timing-function(ease, ease, linear);
+      @include transition-delay(0.2s, 0.2s, 0.2s);
+      
+      opacity: 1;
+      margin-top: 1rem;
+      visibility: visible;
+    }
+  }
+  @media #{$medium-up} {
+    &.revealed {
+      .modal-inner {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+// Content styles
+.modal {
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    display: block;
+    font-size: 1rem;
+    line-height: 1;
+    color: rgba($base-color, 0.32);
+    font-weight: bold;
+    text-transform: uppercase;
+    span {
+      @extend .visually-hidden;
+    }
+    &:before {
+      @extend .icon-cross;
+      margin-right: 0.15rem;
+    }
+  }
+}
