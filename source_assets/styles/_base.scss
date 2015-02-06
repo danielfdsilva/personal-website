@@ -70,6 +70,14 @@ a:active{
 }
 
 // SITE HEADER
+@keyframes verticalWobble {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(1rem);
+  }
+}
 
 #site-header {
   background: url('../graphics/layout/headimage.jpg') no-repeat center center fixed; 
@@ -91,10 +99,22 @@ a:active{
   text-transform: uppercase;
   box-shadow: 0 2px 0 0 $border-shadow-rgba;
   
-  text-align: center;  
+  text-align: center;
+  
+  &:before {
+    display: block;
+    content: 'SCROLL DOWN';
+    position: absolute;
+    z-index: 100;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    color: rgba(#FFF, 0.64);
+    font-size: 0.875rem;
+    @include animation(verticalWobble 1s 0s infinite cubic-bezier(0.82,0.01,1,1) alternate);
+  }
 }
-
-
+    
 #site-title {
   display: inline-block;
   width: 100%;
