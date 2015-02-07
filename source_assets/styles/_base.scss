@@ -173,20 +173,34 @@ a:active{
 #work {
   padding: 4rem 1rem;
   text-align: center;
-  
-  .project-list {
+
+  // Project index
+  .project-index {
     list-style: none;
     text-align: center;
     
-    .project-wrapper {
+    li {
       display: inline-block;
       margin: 0 1rem 2rem 1rem;
+      
+      & > span {
+        @extend .visually-hidden;
+      } 
     }
 
-    .project-avatar {
+    .project-link {
+      display: block;
       border-radius: $global-rounded;
       box-shadow: 0 0 0 1px $border-shadow-rgba;
       overflow: hidden;
+      width: 12.5rem;
+      height: 12.5rem;
+      @include transition(transform .1s ease-in-out);
+
+      &:hover {
+        @include transform(scale(1.10));
+        @include opacity(1);
+      }
       
       img {
         width: inherit;
@@ -194,17 +208,30 @@ a:active{
         border-radius: $global-rounded;
       }
     }
+  } // END Project index
+  
+  // Project listing
+  .project-list {
+    list-style: none;
+  }
 
-    .project {
-    
-      .project-inner {
-        text-align: center;
+  .project {
+    @extend .modal;
 
-        > a {
-          @include center();
-          &:hover {
-            @include opacity(1);
-          }
+    .project-inner {
+      @extend .modal-inner;
+      text-align: center;
+      
+      .project-avatar {
+        width: 6.5rem;
+        height: 6.5rem;
+        border-radius: $global-rounded;
+        box-shadow: 0 0 0 1px $border-shadow-rgba;
+        overflow: hidden;
+        margin-bottom: 1rem;
+
+        @media #{$medium-up} {
+          margin-bottom: 2rem;
         }
       }
       
@@ -242,53 +269,9 @@ a:active{
       .bttn {
         margin-top: 2rem;
       }
+    }
+  } // END Project listing
 
-      // Project as a circle.
-      &:not(.revealed) {
-        .project-inner {
-          > .project-avatar {
-            width: 12.5rem;
-            height: 12.5rem;
-            @include transition(transform .1s ease-in-out);
-
-            &:hover {
-              @include transform(scale(1.10));
-            }
-          }
-        }
-        .project-details {
-          @extend .visually-hidden;
-        }
-        .project-avatar {
-          
-        }
-      }
-
-      // Project as a modal.
-      &.revealed {
-        @extend .modal;
-        .project-inner {
-          @extend .modal-inner;
-        }
-        .project-avatar {
-          width: 6.5rem;
-          height: 6.5rem;
-          margin-bottom: 1rem;
-          cursor: default;
-          
-          &:active {
-            transform: none;
-          }
-          
-          @media #{$medium-up} {
-            margin-bottom: 2rem;
-          }
-        }
-      }
-
-    } // End .project
-
-  }
 }
 
 #site-footer {

@@ -1,26 +1,27 @@
 (function(){
   window.onload = function docOnLoad() {
   
-    var projectsHTMLCollection = document.getElementsByClassName('project');
+    var projectsNodelist = document.querySelectorAll('.project-index .js-open');
     // Because of the trap in the htmlCollection, convert it
     // to a friendly array.
     // http://blog.cluster-text.com/2013/04/29/a-trap-when-looping-on-getelementsbyclassname/
-    var projects = [].slice.call(projectsHTMLCollection);
+    var projectsIndex = [].slice.call(projectsNodelist);
     
-    projects.forEach(function(project) {
+    projectsIndex.forEach(function(projItem) {
+      var id = projItem.getAttribute('href');
+      var proj = document.querySelector(id);
 
-      project.querySelector('.js-open').addEventListener('click', function(e) {
+      projItem.addEventListener('click', function(e) {
         e.preventDefault();
-        if (!project.className.match(/revealed/)) {
-          project.className = project.className + ' revealed';
+        if (!proj.className.match(/revealed/)) {
+          proj.className = proj.className + ' revealed';
         }
       }, false);
       
-      project.querySelector('.js-close').addEventListener('click', function(e) {
+      proj.querySelector('.js-close').addEventListener('click', function(e) {
         e.preventDefault();
-        project.className = project.className.replace(/ ?revealed/, '');
+        proj.className = proj.className.replace(/ ?revealed/, '');
       }, false);
-
     });
     
     document.addEventListener('keyup', function(e) {
@@ -31,7 +32,6 @@
           modals[i].className = modals[i].className.replace(/ ?revealed/, '');
         }
       }
-  
     });
 
   };
