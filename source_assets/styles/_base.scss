@@ -70,12 +70,22 @@ a:active{
 }
 
 // SITE HEADER
+@-webkit-keyframes verticalWobble {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    // IE doesn't like rems.
+    transform: translateY(16px); // 1rem
+  }
+}
 @keyframes verticalWobble {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(1rem);
+    // IE doesn't like rems.
+    transform: translateY(16px); // 1rem
   }
 }
 
