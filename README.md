@@ -1,7 +1,9 @@
-# Daniel da Silva 
-My personal website.
+# Daniel da Silva
+> Version 1.0.0 
 
-> Not live yet.
+My personal website. Live at http://danielfdsilva.com
+
+
 
 ## Development environment
 To set up the development environment for this website, you'll need to install the following on your system:

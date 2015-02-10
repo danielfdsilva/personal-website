@@ -1,7 +1,7 @@
 {
   "name": "danieldfsilva.com",
   "version": "1.0.0",
-  "description": "Personal portfolio",
+  "description": "Personal website",
   "author": "Daniel da Sivla",
   "devDependencies": {
     "grunt": "^0.4.5",
