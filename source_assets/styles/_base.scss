@@ -71,31 +71,38 @@ a:active{
 
 // SITE HEADER
 @-webkit-keyframes verticalWobble {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
+  from {
     // IE doesn't like rems.
-    transform: translateY(16px); // 1rem
+    bottom: 16px; // 1rem
+
+    // IOS was not working with translate.
+    //transform: translateY(0);
+  }
+  to {
+    bottom: 0;
+
+    // IOS was not working with translate.
+    //transform: translateY(16px); // 1rem
   }
 }
 @keyframes verticalWobble {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
+  from {
     // IE doesn't like rems.
-    transform: translateY(16px); // 1rem
+    bottom: 16px; // 1rem
+  }
+  to {
+    bottom: 0;
   }
 }
 
 #site-header {
-  background: url('../graphics/layout/headimage.jpg') no-repeat center center fixed; 
+  background: url('../graphics/layout/headimage.jpg') no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+
+
   height: 100%;
   position: fixed;
   top: 0;
