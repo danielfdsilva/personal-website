@@ -2,7 +2,7 @@
   "name": "danieldfsilva.com",
   "version": "1.0.0",
   "description": "Personal website",
-  "author": "Daniel da Sivla",
+  "author": "Daniel da Silva",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "~0.6.0",
