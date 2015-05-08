@@ -1,5 +1,5 @@
 # Daniel da Silva
-> Version 1.0.0 
+> Version 1.1.0
 
 My personal website. Live at http://danielfdsilva.com
 
