@@ -1,8 +1,17 @@
 {
   "name": "danieldfsilva.com",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Personal website",
   "author": "Daniel da Silva",
+  "license": "MIT",
+  "homepage": "http://danielfdsilva.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danielfdsilva/personal-website.git"
+  },
+  "scripts": {
+    "install": "bundle install"
+  },
   "devDependencies": {
     "browser-sync": "~2.1.1",
     "gulp": "^3.8.11",

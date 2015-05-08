@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - '0.12'
+
+env:
+  global:
+  - PRODUCTION_BRANCH=master
+
+before_install:
+  - chmod +x ./.build_scripts/deploy.sh
+  - sudo apt-get install ncftp
+
+script:
+  - "./node_modules/gulp/bin/gulp.js prod"
+
+after_success:
+  - ./.build_scripts/deploy.sh

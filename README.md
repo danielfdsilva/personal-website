@@ -15,8 +15,8 @@ To set up the development environment for this website, you'll need to install t
 After these basic requirements are met, run the following commands in the website's folder:
 ```
 $ npm install
-$ bundle install
 ```
+This will also run `bundle install`
 
 ### Getting started
 
