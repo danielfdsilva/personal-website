@@ -1,5 +1,5 @@
 # Daniel da Silva [![Build Status](https://travis-ci.org/danielfdsilva/personal-website.svg?branch=master)](https://travis-ci.org/danielfdsilva/personal-website)
-> Version 1.1.0
+> Version 1.1.1
 
 My personal website. Live at http://danielfdsilva.com
 
@@ -45,5 +45,5 @@ Compile the compass files and javascripts prepared for production (minified, ugl
 $ gulp prod
 ```
 
-##License
+## License
 My website is licensed under **The MIT License (MIT)**, see the LICENSE file for more details.
