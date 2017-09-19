@@ -10,17 +10,23 @@
     "url": "git://github.com/danielfdsilva/personal-website.git"
   },
   "scripts": {
-    "install": "bundle install"
+    "serve": "gulp",
+    "build": "gulp prod"
   },
   "devDependencies": {
     "browser-sync": "~2.1.1",
     "gulp": "^3.8.11",
     "gulp-changed": "^1.2.1",
     "gulp-clean": "^0.3.1",
-    "gulp-compass": "~2.0.3",
     "gulp-jshint": "^1.10.0",
     "gulp-plumber": "~0.6.6",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
     "gulp-uglifyjs": "~0.6.0",
+    "jeet": "7.1.0",
+    "node-bourbon": "^4.2.8",
+    "node-notifier": "^5.0.2",
+    "node-sass": "^4.5.0",
     "run-sequence": "~1.0.2"
   }
 }

@@ -31,11 +31,9 @@ a {
   cursor: pointer;
   color: $primary-color;
   text-decoration: none;
-  @include transform(translateZ(0));
-  @include transition-property(opacity);
-  @include transition-duration(0.2s);
-  @include transition-timing-function(ease);
-  @include transition-delay(0);
+  transform: translateZ(0);
+  opacity: 1;
+  transition: opacity 0.2s ease 0s;
 }
 
 a:visited {
@@ -49,7 +47,7 @@ a:hover {
 
 a:active{
   outline: none;
-  @include transform(translate(0, 1px));
+  transform: translate(0, 1px);
 }
 
 // Rows
@@ -128,7 +126,7 @@ a:active{
     width: 100%;
     color: rgba(#FFF, 0.64);
     font-size: 0.875rem;
-    @include animation(verticalWobble 1s 0s infinite cubic-bezier(0.82,0.01,1,1) alternate);
+    animation: verticalWobble 1s 0s infinite cubic-bezier(0.82,0.01,1,1) alternate;
   }
 }
     
@@ -212,11 +210,11 @@ a:active{
       overflow: hidden;
       width: 12.5rem;
       height: 12.5rem;
-      @include transition(transform .1s ease-in-out);
+      transition: transform .1s ease-in-out;
 
       &:hover {
-        @include transform(scale(1.10));
-        @include opacity(1);
+        transform: scale(1.10);
+        opacity: 1;
       }
       
       img {
@@ -304,14 +302,14 @@ a:active{
   h1 {
     @extend .hd-s;
     margin: 3rem 0 1rem 0;
-    @include opacity(0.64);
+    opacity: 0.64;
   }
   
   .prose {
     @include center();
     font-size: 0.875rem;
     max-width: 34rem;
-    @include opacity(0.64);
+    opacity: 0.64;
     
     a {
       color: #FFF;
@@ -323,7 +321,7 @@ a:active{
     text-transform: uppercase;
     font-size: 0.875rem;
     margin-top: 2rem;
-    @include opacity(0.64);
+    opacity: 0.64;
   }
   
   ul {
