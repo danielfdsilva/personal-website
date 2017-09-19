@@ -1,9 +1,7 @@
 # Daniel da Silva [![Build Status](https://travis-ci.org/danielfdsilva/personal-website.svg?branch=master)](https://travis-ci.org/danielfdsilva/personal-website)
-> Version 1.1.1
+> Version 1.2.0
 
 My personal website. Live at http://danielfdsilva.com
-
-
 
 ## Development environment
 To set up the development environment for this website, you'll need to install the following on your system:
