@@ -8,7 +8,7 @@ input[type=reset],
 input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;
-  @include transform(translateZ(0));
+  transform: translate(0);
 }
 
 .bttn {
@@ -21,7 +21,7 @@ input[type=submit] {
   border-radius: $global-radius;
   border: 0;
   background-image: none;
-  @include user-select(none);
+  user-select: none;
 
   line-height: 1.5rem;
   font-size: 1rem;
@@ -34,7 +34,7 @@ input[type=submit] {
 
   &:active {
     outline: none;
-    @include transform(translate(1px 0));
+    transform: translate(1px 0);
   }
   &:hover {
     opacity: 0.88;
@@ -53,10 +53,7 @@ input[type=submit] {
       @extend .visually-hidden;
     }
   }
-  @include transition-property(background-color, opacity);
-  @include transition-duration(0.2s, 0.2s);
-  @include transition-timing-function(ease, ease);
-  @include transition-delay(0, 0);
+  transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
 }
 
 

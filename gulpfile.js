@@ -1,11 +1,14 @@
 var gulp = require('gulp');
-var compass = require('gulp-compass');
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var plumber = require('gulp-plumber');
 var clean = require('gulp-clean');
 var uglify = require('gulp-uglifyjs');
 var jshint = require('gulp-jshint');
+var sass = require('gulp-sass');
+var SassString = require('node-sass').types.String;
+var notifier = require('node-notifier');
+var sourcemaps = require('gulp-sourcemaps');
 
 // Script handling.
 gulp.task('scripts:build', function(done) {
@@ -31,15 +34,42 @@ gulp.task('scripts', function(done) {
 
 // Style handling
 gulp.task('compass', function() {
-  return gulp.src('app/assets/styles/*.scss')
-    .pipe(plumber())
-    .pipe(compass({
-      css: 'dist/assets/styles',
-      sass: 'app/assets/styles',
-      style: production ? 'compressed' : 'expanded',
-      sourcemap: production ? false : true,
-      bundle_exec: true
+  var task = gulp.src('app/assets/styles/main.scss')
+    .pipe(plumber(function (e) {
+      notifier.notify({
+        title: 'Oops! Sass errored:',
+        message: e.message
+      });
+      console.log('Sass error:', e.toString());
+      if (production) {
+        process.exit(1);
+      }
+      // Allows the watch to continue.
+      this.emit('end');
+    }))
+
+    if (!production) {
+      task = task.pipe(sourcemaps.init())
+    }
+    
+    task = task.pipe(sass({
+      outputStyle: production ? 'compressed' : 'expanded',
+      precision: 10,
+      functions: {
+        'urlencode($url)': function (url) {
+          var v = new SassString();
+          v.setValue(encodeURIComponent(url.getValue()));
+          return v;
+        }
+      },
+      includePaths: require('node-bourbon').with('node_modules/jeet')
     }));
+
+    if (!production) {
+      task = task.pipe(sourcemaps.write())
+    }
+
+    return task.pipe(gulp.dest('dist/assets/styles'));
 });
 
 
