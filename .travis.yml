@@ -1,11 +1,17 @@
 language: node_js
 
 node_js:
-  - '0.12'
+  - '6'
 
 env:
   global:
   - PRODUCTION_BRANCH=master
+
+cache:
+  apt: true
+  yarn: true
+  directories:
+  - node_modules
 
 before_install:
   - chmod +x ./.build_scripts/deploy.sh
@@ -13,7 +19,11 @@ before_install:
   - sudo apt-get install ncftp
 
 script:
-  - "./node_modules/gulp/bin/gulp.js prod"
+  - yarn build
 
-after_success:
-  - ./.build_scripts/deploy.sh
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: ".build_scripts/deploy.sh"
+  on:
+    branch: "${PRODUCTION_BRANCH}"
