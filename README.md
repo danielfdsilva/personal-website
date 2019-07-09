@@ -1,4 +1,4 @@
-# Daniel da Silva [![Build Status](https://travis-ci.org/danielfdsilva/personal-website.svg?branch=master)](https://travis-ci.org/danielfdsilva/personal-website)
+# Daniel da Silva [![CircleCI](https://circleci.com/gh/danielfdsilva/personal-website/tree/master.svg?style=svg)](https://circleci.com/gh/danielfdsilva/personal-website/tree/master)
 > Version 1.2.0
 
 My personal website. Live at http://danielfdsilva.com
