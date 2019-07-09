@@ -9,7 +9,7 @@ Name: Ricardo Mestre - http://duplos.org
 Name: Olaf Veerman
 
 /* SITE */
-Last update: 2017/09/19
+Last update: 2019/07/09
 Standards: HTML5, CSS3
 Software: Sublime Text 3, Adobe Illustrator CC, Adobe Photoshop CC, Iconmoon, Compass, Gulp
-Version: 1.2.0
+Version: 1.2.1

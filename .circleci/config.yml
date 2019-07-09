@@ -1,0 +1,63 @@
+# https://github.com/developmentseed/how/issues/149
+# ssh-keygen -m pem -t rsa -b 4096 -C danielfdsilva/personal-website -f deploy_key
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:6
+
+    working_directory: ~/repo
+
+    environment:
+      - PRODUCTION_BRANCH: master
+      - GH_REF: git@github.com:danielfdsilva/personal-website.git
+      - GH_NAME: "Daniel da Silva"
+      - GH_EMAIL: "mailpatudo@gmail.com"
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+
+      - add_ssh_keys:
+          fingerprints:
+            - "47:b1:36:85:e2:32:11:9c:36:8d:2f:b9:59:b5:e4:9f"
+
+      - run:
+          name: Building site
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "${PRODUCTION_BRANCH}" ]; then
+              yarn build
+            else
+              echo "Skip building site"
+            fi
+
+      - run:
+          name: Deploy to GH Pages
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "${PRODUCTION_BRANCH}" ]; then
+              cd dist
+              git init
+              git config user.name "$GH_NAME"
+              git config user.email "$GH_EMAIL"
+              git add .
+              git commit -m "CI deploy [skip ci]"
+              git remote add origin $GH_REF
+              git push origin --force --quiet HEAD:gh-pages
+              rm -rf .git
+            else
+              echo "Skip deploying to Github"
+            fi
