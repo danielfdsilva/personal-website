@@ -1,5 +1,5 @@
 # Daniel da Silva [![CircleCI](https://circleci.com/gh/danielfdsilva/personal-website/tree/master.svg?style=svg)](https://circleci.com/gh/danielfdsilva/personal-website/tree/master)
-> Version 1.2.1
+> Version 1.2.2
 
 My personal website. Live at http://danielfdsilva.com
 
