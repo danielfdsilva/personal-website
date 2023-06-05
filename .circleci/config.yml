@@ -34,7 +34,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "47:b1:36:85:e2:32:11:9c:36:8d:2f:b9:59:b5:e4:9f"
+            - "97:16:c1:59:35:89:73:e7:2c:1a:02:63:b2:15:b6:80"
 
       - run:
           name: Building site
